@@ -2,105 +2,105 @@
 
 An end-to-end generative dance performance visualizer that captures dancer movements using AI-based pose estimation and generates real-time visual effects.
 
-![Python](https://img.shields.io/badge/python-v3.10+-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-
-## 🎯 Features
-
-- **Real-time Pose Detection**: Uses MediaPipe for accurate body keypoint tracking
-- **Gesture Recognition**: Detects specific dance moves (hands up, arms wide, jumping)
-- **Dynamic Visual Effects**: Particle systems, trails, and animations that respond to movement
-- **Energy-based Responses**: Visuals adapt to movement intensity (calm vs energetic)
-- **Interactive Controls**: Toggle video, fullscreen mode, and debug info
-- **Optimized Performance**: 30fps real-time processing
-
 ## 🚀 Quick Start
 
-### Prerequisites
-- Python 3.10 or higher
-- Webcam
-- Windows/Linux/macOS
+### Method 1: Easy Start (Windows)
+```bash
+# Start web interface
+start_web.bat
+# OR
+.\start_web.ps1
 
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/dance-visualizer.git
-   cd dance-visualizer
-   ```
-
-2. **Set up virtual environment** (recommended)
-   ```bash
-   python -m venv venv
-   
-   # Windows
-   venv\Scripts\activate
-   
-   # Linux/macOS
-   source venv/bin/activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run the application**
-   ```bash
-   python main.py
-   ```
-
-### Quick Setup Scripts
-
-**Windows PowerShell:**
-```powershell
-.\setup.ps1  # First time setup
-.\run.ps1    # Run the application
+# In another terminal, start the visualizer
+python main.py
 ```
 
-**Windows Command Prompt:**
-```cmd
-run.bat
+### Method 2: Manual Start
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Start web interface
+streamlit run web_interface.py
+
+# 3. In another terminal/command prompt, start visualizer
+python main.py
 ```
 
-## 🎮 Controls
-
-| Key | Action |
-|-----|--------|
-| `V` | Toggle video debug window |
-| `F` | Toggle fullscreen mode |
-| `Q` | Quit application |
-
-## 🏗️ Project Structure
-
-```
-dance_visualiser/
-├── main.py              # Main application entry point
-├── pose_module.py       # MediaPipe pose detection logic
-├── visuals.py          # Generative visual effects
-├── requirements.txt    # Python dependencies
-├── setup.ps1          # PowerShell setup script
-├── run.ps1            # PowerShell run script
-├── run.bat            # Windows batch run script
-├── README.md          # This file
-└── .gitignore         # Git ignore file
+### Method 3: Alternative Port (if localhost:8501 doesn't work)
+```bash
+streamlit run web_interface.py --server.port 8502
 ```
 
-## 🎨 Visual Effects
+## 🔧 Troubleshooting
 
-### Gesture-based Effects
-- **Hands Up**: Particle explosions from both hands
-- **Arms Wide**: Connecting line particles between hands
-- **Jump**: Fireworks burst effect
+### "localhost refused to connect"
+1. **Check if Streamlit is running**:
+   ```bash
+   # Look for this output when starting:
+   # Local URL: http://localhost:8501
+   # Network URL: http://192.168.x.x:8501
+   ```
 
-### Movement-based Effects
-- **Hand Trails**: Colorful trails following hand movements
-- **Ambient Particles**: Energy-responsive particle generation
-- **Background Patterns**: Pulsing circles based on movement intensity
-- **Dynamic Colors**: Color palettes change with energy levels
+2. **Try different port**:
+   ```bash
+   streamlit run web_interface.py --server.port 8502
+   ```
 
-## 🔧 Technical Details
+3. **Check firewall/antivirus**: Make sure they're not blocking the connection
 
+4. **Use network URL**: If localhost doesn't work, try the Network URL shown in the terminal
+
+### "Module not found" errors
+```bash
+# Make sure you're in the right directory
+cd c:\Users\Poorvi\Desktop\dance_visualiser
+
+# Activate virtual environment
+venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### Virtual Environment Issues
+```bash
+# Create new virtual environment
+python -m venv venv
+
+# Activate (Windows)
+venv\Scripts\activate
+
+# Install requirements
+pip install -r requirements.txt
+```
+
+## 📱 Web Interface Features
+
+- 🎮 **Start/Stop Controls**: Launch visualizer from web interface
+- 🎨 **Visual Presets**: Calm, Energetic, and Party modes
+- ⚙️ **Real-time Configuration**: Adjust settings without restarting
+- 📊 **Performance Monitoring**: FPS and particle count metrics
+- 📱 **Mobile Friendly**: Works on phones and tablets
+
+## 🎯 Usage Flow
+
+1. **Start Web Interface**: `streamlit run web_interface.py`
+2. **Configure Settings**: Use the web panel to adjust visual effects
+3. **Start Visualizer**: Click "Start Visualizer" or run `python main.py`
+4. **Dance & Enjoy**: Move in front of your camera to see the effects!
+
+## 📞 Support
+
+If you're still having issues:
+1. Check that you're in the correct directory
+2. Ensure Python 3.10+ is installed
+3. Try running commands in a new terminal/command prompt
+4. Check Windows firewall settings
+
+---
+
+**Happy Dancing! 🕺💃**
 ### Core Technologies
 - **MediaPipe**: Real-time pose estimation
 - **OpenCV**: Video capture and processing

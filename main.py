@@ -5,13 +5,16 @@ Setup Instructions:
 1. Create virtual environment: python -m venv venv
 2. Activate it: venv\Scripts\activate (Windows) or source venv/bin/activate (Linux/Mac)
 3. Install dependencies: pip install -r requirements.txt
-4. Run: python main.py
+4. Run web interface: streamlit run web_interface.py
+5. Run visualizer: python main.py
 """
 
 import cv2
 import pygame
 import sys
 import numpy as np
+import json
+import os
 
 # Check for required modules
 try:
@@ -25,6 +28,9 @@ except ImportError as e:
 
 class DanceVisualizer:
     def __init__(self):
+        # Load configuration from web interface
+        self.load_config()
+        
         # Check camera availability
         test_cap = cv2.VideoCapture(0)
         if not test_cap.isOpened():
@@ -69,7 +75,32 @@ class DanceVisualizer:
         
         # Performance tracking
         self.clock = pygame.time.Clock()
-        self.fps_target = 30
+    
+    def load_config(self):
+        """Load configuration from web interface"""
+        config_file = "visualizer_config.json"
+        default_config = {
+            "particle_count": 50,
+            "trail_length": 15,
+            "sensitivity": 5.0,
+            "fullscreen": False,
+            "video_overlay": True,
+            "fps_target": 30
+        }
+        
+        if os.path.exists(config_file):
+            try:
+                with open(config_file, 'r') as f:
+                    self.config = json.load(f)
+            except:
+                self.config = default_config
+        else:
+            self.config = default_config
+        
+        # Apply configuration
+        self.fps_target = self.config.get("fps_target", 30)
+        self.show_video = self.config.get("video_overlay", True)
+        self.fullscreen = self.config.get("fullscreen", False)
     
     def handle_events(self):
         """Handle keyboard and window events"""
@@ -229,12 +260,8 @@ class DanceVisualizer:
 
 if __name__ == "__main__":
     print("=== Dance Performance Visualizer ===")
-    print("Make sure you have activated your virtual environment!")
-    print("If you haven't set up the environment yet:")
-    print("1. python -m venv venv")
-    print("2. venv\\Scripts\\activate  (Windows)")
-    print("3. pip install -r requirements.txt")
-    print("\nStarting visualizer...")
+    print("💡 Tip: Run 'streamlit run web_interface.py' for web controls!")
+    print("Starting visualizer...")
     
     try:
         visualizer = DanceVisualizer()

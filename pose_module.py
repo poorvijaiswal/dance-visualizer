@@ -1,3 +1,9 @@
+"""
+Dance Performance Visualizer - Pose Detection Module
+
+This module handles MediaPipe pose detection and gesture recognition.
+"""
+
 import cv2
 import mediapipe as mp
 import numpy as np

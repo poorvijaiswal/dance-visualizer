@@ -1,0 +1,11 @@
+{
+  "particle_count": 30,
+  "trail_length": 20,
+  "sensitivity": 3.0,
+  "color_scheme": "calm",
+  "background_effects": true,
+  "gesture_detection": true,
+  "fullscreen": true,
+  "video_overlay": true,
+  "fps_target": 30
+}
