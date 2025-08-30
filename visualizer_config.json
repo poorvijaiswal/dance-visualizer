@@ -1,11 +1,14 @@
 {
-  "particle_count": 30,
-  "trail_length": 20,
-  "sensitivity": 3.0,
-  "color_scheme": "calm",
+  "particle_count": 80,
+  "trail_length": 12,
+  "sensitivity": 7.0,
+  "color_scheme": "energetic",
   "background_effects": true,
   "gesture_detection": true,
-  "fullscreen": true,
-  "video_overlay": true,
-  "fps_target": 30
+  "show_skeleton": true,
+  "effect_intensity": 0.8,
+  "refresh_rate": 10,
+  "frame_buffer": true,
+  "smart_refresh": true,
+  "background_intensity": 0.3
 }
